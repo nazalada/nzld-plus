@@ -1,0 +1,21 @@
+# Прямые зависимости. Версии — те, на которых всё замерено и работает.
+# Остальное (sympy, networkx, fsspec…) притянется само как зависимость torch.
+#
+# Нужен Python 3.12 или новее — это пол по numpy. У macOS «из коробки» python3 = 3.9.6,
+# на нём установка провалится с невнятным «No matching distribution found for torch».
+# install.sh проверяет это сам и отказывается громко.
+torch==2.13.0
+torchvision==0.28.0
+numpy==2.5.1
+opencv-contrib-python==5.0.0.93
+pyobjc-framework-Quartz==12.2.1
+pyobjc-framework-Cocoa==12.2.1
+
+# 3D-трекинг: решение камеры по облаку точек (track3d.py). +52 МБ.
+pycolmap==4.1.1
+
+# Модель трекера (CoTracker3) не ставится через pip — тянется с torch.hub при первом
+# трекинге. Нужен интернет один раз.
+#
+# SAM-2 нужен ТОЛЬКО для roto.py, а RotoScope сейчас вырезан из панели. Ставить не надо,
+# пока фича не вернётся:  pip install "git+https://github.com/facebookresearch/sam2.git"
